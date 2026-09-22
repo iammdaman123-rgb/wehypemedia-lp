@@ -440,12 +440,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="s-label rv">Common questions</div>
   <h2 class="s-head rv" style="margin:0 auto 8px;text-align:center">Questions you're probably asking</h2>
   <div class="faq-list">
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How are you different from other agencies?</div><div class="faq-a"><p>Two things: we understand your business before building a strategy, and we set up CRO audits, analytics, and tracking as standard — not as billable extras. Every campaign sits on infrastructure that proves what it earned.</p></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's the minimum budget to start?</div><div class="faq-a"><p>₹30,000/month ad spend and above (separate from management fees). We'll tell you honestly if paid ads aren't the right starting point — sometimes SEO or organic is the better move.</p></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How quickly will I see results?</div><div class="faq-a"><p>Paid ads: meaningful data within 30–60 days. SEO: 3–6 months for consistent organic growth. We set honest timelines in week one and never promise "page 1 in 30 days."</p></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I own my ad accounts and data?</div><div class="faq-a"><p>Yes. Everything — ad accounts, pixels, analytics, dashboards, creative files — is set up in your name. If we part ways, you keep it all. This is non-negotiable.</p></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I already have an agency?</div><div class="faq-a"><p>Our Growth Audit Call shows you what's working and what isn't. If you decide to switch, we handle the full transition without any downtime.</p></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you work with specific industries?</div><div class="faq-a"><p>We've worked across hospitality, wellness, D2C, events, real estate, and professional services. Every engagement gets a tailored strategy — never a copy-paste template.</p></div></div>
+    <div class="faq-item"><div class="faq-q">How are you different from other agencies?</div><div class="faq-a"><p>Two things: we understand your business before building a strategy, and we set up CRO audits, analytics, and tracking as standard — not as billable extras. Every campaign sits on infrastructure that proves what it earned.</p></div></div>
+    <div class="faq-item"><div class="faq-q">What's the minimum budget to start?</div><div class="faq-a"><p>₹30,000/month ad spend and above (separate from management fees). We'll tell you honestly if paid ads aren't the right starting point — sometimes SEO or organic is the better move.</p></div></div>
+    <div class="faq-item"><div class="faq-q">How quickly will I see results?</div><div class="faq-a"><p>Paid ads: meaningful data within 30–60 days. SEO: 3–6 months for consistent organic growth. We set honest timelines in week one and never promise "page 1 in 30 days."</p></div></div>
+    <div class="faq-item"><div class="faq-q">Do I own my ad accounts and data?</div><div class="faq-a"><p>Yes. Everything — ad accounts, pixels, analytics, dashboards, creative files — is set up in your name. If we part ways, you keep it all. This is non-negotiable.</p></div></div>
+    <div class="faq-item"><div class="faq-q">What if I already have an agency?</div><div class="faq-a"><p>Our Growth Audit Call shows you what's working and what isn't. If you decide to switch, we handle the full transition without any downtime.</p></div></div>
+    <div class="faq-item"><div class="faq-q">Do you work with specific industries?</div><div class="faq-a"><p>We've worked across hospitality, wellness, D2C, events, real estate, and professional services. Every engagement gets a tailored strategy — never a copy-paste template.</p></div></div>
   </div>
 </div>
 </section>
@@ -551,9 +551,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 // ═══ CONFIG ═══
-// PASTE YOUR APPS SCRIPT URL BELOW (after deploying the script)
-var FORM_URL='https://script.google.com/macros/s/AKfycbxk1P9udtA-wJY0PXAmh8RP6J_qZ5D4yRhw763bu4tq765xYUNrIPGDKhTPHzwPze_i/exec';
-var EMAIL_URL='https://formsubmit.co/ajax/iammdaman123@gmail.com';
+var FORM_URL = 'https://script.google.com/macros/s/AKfycbzhR4iSrC5MCclLgobm0g0oBlqaKFzQcIK0jM4FrTigr_M_kDyh9ReGSx6mKm3YP21N/exec';
+var EMAIL_URL = 'https://formsubmit.co/ajax/iammdaman123@gmail.com';
 // ═══ GCLID CAPTURE ═══
 (function(){
   var p=new URLSearchParams(location.search),g=p.get('gclid');
@@ -566,14 +565,6 @@ var EMAIL_URL='https://formsubmit.co/ajax/iammdaman123@gmail.com';
 // ═══ NAV SCROLL ═══
 window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',scrollY>50)});
 
-// ═══ MOBILE NAV ═══
-var nav=document.getElementById('nav'),navToggle=nav.querySelector('.nav-mobile'),navLinks=nav.querySelector('.nav-links');
-function closeNav(){navLinks.classList.remove('open');navToggle.setAttribute('aria-expanded','false')}
-navToggle.addEventListener('click',function(event){event.stopPropagation();var isOpen=navLinks.classList.toggle('open');navToggle.setAttribute('aria-expanded',isOpen?'true':'false')});
-navLinks.querySelectorAll('a').forEach(function(link){link.addEventListener('click',closeNav)});
-document.addEventListener('click',function(event){if(window.innerWidth<=768&&!nav.contains(event.target))closeNav()});
-window.addEventListener('resize',function(){if(window.innerWidth>768)closeNav()});
-
 // ═══ REVEAL ON SCROLL ═══
 var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
@@ -585,57 +576,69 @@ var ds=dots.children;
 st.addEventListener('scroll',function(){var idx=Math.round(st.scrollLeft/296);for(var j=0;j<ds.length;j++)ds[j].className=j===idx?'svc-dot on':'svc-dot'});
 function svcScr(dir){st.scrollBy({left:dir*296,behavior:'smooth'})}
 
+// ═══ FAQ ═══
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){this.parentElement.classList.toggle('open')});
+});
+
+// ═══ VALIDATION HELPERS ═══
+function isValidEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+function isValidPhone(phone){
+  var digits=phone.replace(/[\s\-\+\(\)]/g,'');
+  return /^\d{10,}$/.test(digits);
+}
+function showError(input,msg){
+  clearError(input);
+  input.style.borderColor='#FF3B30';
+  var err=document.createElement('div');
+  err.className='field-error';
+  err.style.cssText='color:#FF3B30;font-size:11px;margin:-10px 0 10px;';
+  err.textContent=msg;
+  input.parentNode.insertBefore(err,input.nextSibling);
+}
+function clearError(input){
+  input.style.borderColor='';
+  var next=input.nextSibling;
+  if(next&&next.className==='field-error')next.remove();
+}
+function clearAllErrors(form){
+  form.querySelectorAll('.field-error').forEach(function(e){e.remove()});
+  form.querySelectorAll('input,select,textarea').forEach(function(e){e.style.borderColor=''});
+}
+
 // ═══ CONTACT FORM ═══
 function handleForm(e){
   e.preventDefault();
   var form=e.target;
   var btn=form.querySelector('button[type="submit"]');
-  var gclid=localStorage.getItem('gclid')||'';
+  clearAllErrors(form);
+  var valid=true;
+  var name=form.name.value.trim();
+  var email=form.email.value.trim();
+  var phone=form.phone.value.trim();
+  var business=form.business.value.trim();
+  var service=form.service.value;
+  if(!name){showError(form.name,'Name is required');valid=false}
+  if(!email){showError(form.email,'Email is required');valid=false}
+  else if(!isValidEmail(email)){showError(form.email,'Enter a valid email');valid=false}
+  if(!phone){showError(form.phone,'Phone is required');valid=false}
+  else if(!isValidPhone(phone)){showError(form.phone,'Enter at least 10 digits');valid=false}
+  if(!business){showError(form.business,'Business name is required');valid=false}
+  if(!service){showError(form.service,'Please select a service');valid=false}
+  if(!valid)return;
   btn.textContent='Sending...';btn.disabled=true;
-
-  var sheetPost=fetch(FORM_URL,{
-    method:'POST',
-    mode:'no-cors',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      formType:'contact',
-      name:form.name.value,
-      email:form.email.value,
-      phone:form.phone.value,
-      business:form.business.value,
-      website:form.website.value,
-      service:form.service.value,
-      message:form.message.value,
-      gclid:gclid
-    })
-  });
-
-  var emailPost=fetch(EMAIL_URL,{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      name:form.name.value,
-      email:form.email.value,
-      phone:form.phone.value,
-      business:form.business.value,
-      website:form.website.value,
-      service:form.service.value,
-      message:form.message.value,
-      _subject:'New Lead from wehypemedia.com: '+form.name.value,
-      _template:'table',
-      _captcha:false
-    })
-  });
-
+  var gclid=localStorage.getItem('gclid')||'';
+  var payload={formType:'contact',name:name,email:email,phone:phone,business:business,website:form.website.value.trim(),service:service,message:form.message.value.trim(),gclid:gclid};
+  var sheetPost=fetch(FORM_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  var emailPost=fetch(EMAIL_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:name,email:email,phone:phone,business:business,website:form.website.value.trim(),service:service,message:form.message.value.trim(),_subject:'New Lead from wehypemedia.com: '+name,_template:'table',_captcha:false})});
   Promise.allSettled([sheetPost,emailPost]).then(function(){
     btn.textContent='✓ Submitted — we\'ll be in touch!';
     btn.style.opacity='0.7';
     form.reset();
     window.dataLayer=window.dataLayer||[];
     window.dataLayer.push({event:'form_submit',form_type:'contact',gclid:gclid});
-  }).catch(function(){
-    btn.textContent='Something went wrong — try WhatsApp';
-    btn.disabled=false;
   });
 }
 
@@ -644,13 +647,21 @@ function openWA(){document.getElementById('waOverlay').classList.add('open')}
 function closeWA(){document.getElementById('waOverlay').classList.remove('open')}
 function sendWA(e){
   e.preventDefault();
-  var n=document.getElementById('waName').value;
-  var g=localStorage.getItem('gclid')||'';
-  var m="Hi, I'm "+n+". I'd like to know more about We Hype Media's services for my business.";
-  if(g)m+=" [ref:"+g+"]";
-  // Push to dataLayer for GTM
+  var form=e.target;
+  clearAllErrors(form);
+  var valid=true;
+  var name=document.getElementById('waName').value.trim();
+  var phone=document.getElementById('waPhone').value.trim();
+  if(!name){showError(document.getElementById('waName'),'Name is required');valid=false}
+  if(!phone){showError(document.getElementById('waPhone'),'Phone is required');valid=false}
+  else if(!isValidPhone(phone)){showError(document.getElementById('waPhone'),'Enter at least 10 digits');valid=false}
+  if(!valid)return;
+  var gclid=localStorage.getItem('gclid')||'';
+  fetch(FORM_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({formType:'whatsapp',name:name,phone:phone,gclid:gclid})});
+  var m="Hi, I'm "+name+". I'd like to know more about We Hype Media's services for my business.";
+  if(gclid)m+=" [ref:"+gclid+"]";
   window.dataLayer=window.dataLayer||[];
-  window.dataLayer.push({event:'whatsapp_click',gclid:g});
+  window.dataLayer.push({event:'whatsapp_click',gclid:gclid});
   window.open("https://wa.me/919205335337?text="+encodeURIComponent(m),'_blank');
   closeWA();
 }
@@ -662,44 +673,31 @@ function submitAudit(e){
   e.preventDefault();
   var form=e.target;
   var btn=form.querySelector('button[type="submit"]');
-  var gclid=localStorage.getItem('gclid')||'';
+  clearAllErrors(form);
+  var valid=true;
+  var name=document.getElementById('auditName').value.trim();
+  var phone=document.getElementById('auditPhone').value.trim();
+  var business=document.getElementById('auditBiz').value.trim();
+  var date=document.getElementById('auditDate').value;
+  var time=document.getElementById('auditTime').value;
+  if(!name){showError(document.getElementById('auditName'),'Name is required');valid=false}
+  if(!phone){showError(document.getElementById('auditPhone'),'Phone is required');valid=false}
+  else if(!isValidPhone(phone)){showError(document.getElementById('auditPhone'),'Enter at least 10 digits');valid=false}
+  if(!business){showError(document.getElementById('auditBiz'),'Business name is required');valid=false}
+  if(!date){showError(document.getElementById('auditDate'),'Select a date');valid=false}
+  if(!time){showError(document.getElementById('auditTime'),'Select a time');valid=false}
+  if(!valid)return;
   btn.textContent='Sending...';btn.disabled=true;
-
-  var data={
-    name:document.getElementById('auditName').value,
-    phone:document.getElementById('auditPhone').value,
-    business:document.getElementById('auditBiz').value,
-    date:document.getElementById('auditDate').value,
-    time:document.getElementById('auditTime').value,
-    challenge:document.getElementById('auditChallenge').value
-  };
-
-  var sheetPost=fetch(FORM_URL,{
-    method:'POST',
-    mode:'no-cors',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(Object.assign({formType:'audit',gclid:gclid},data))
-  });
-
-  var emailPost=fetch(EMAIL_URL,{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify(Object.assign({
-      _subject:'Audit Booking: '+data.name,
-      _template:'table',
-      _captcha:false
-    },data))
-  });
-
+  var gclid=localStorage.getItem('gclid')||'';
+  var challenge=document.getElementById('auditChallenge').value.trim();
+  var sheetPost=fetch(FORM_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({formType:'audit',name:name,phone:phone,business:business,date:date,time:time,challenge:challenge,gclid:gclid})});
+  var emailPost=fetch(EMAIL_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:name,phone:phone,business:business,date:date,time:time,challenge:challenge,_subject:'Audit Booking: '+name,_template:'table',_captcha:false})});
   Promise.allSettled([sheetPost,emailPost]).then(function(){
     btn.textContent='✓ Request sent!';
     btn.style.opacity='0.7';
     window.dataLayer=window.dataLayer||[];
     window.dataLayer.push({event:'audit_booked',gclid:gclid});
     setTimeout(function(){closeAudit()},2000);
-  }).catch(function(){
-    btn.textContent='Something went wrong — try WhatsApp';
-    btn.disabled=false;
   });
 }
 </script>
