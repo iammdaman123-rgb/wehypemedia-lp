@@ -553,6 +553,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 // ═══ CONFIG ═══
 // PASTE YOUR APPS SCRIPT URL BELOW (after deploying the script)
 var FORM_URL='https://script.google.com/macros/s/AKfycbxk1P9udtA-wJY0PXAmh8RP6J_qZ5D4yRhw763bu4tq765xYUNrIPGDKhTPHzwPze_i/exec';
+var EMAIL_URL='https://formsubmit.co/ajax/iammdaman123@gmail.com';
 // ═══ GCLID CAPTURE ═══
 (function(){
   var p=new URLSearchParams(location.search),g=p.get('gclid');
@@ -592,7 +593,7 @@ function handleForm(e){
   var gclid=localStorage.getItem('gclid')||'';
   btn.textContent='Sending...';btn.disabled=true;
 
-  fetch(FORM_URL,{
+  var sheetPost=fetch(FORM_URL,{
     method:'POST',
     mode:'no-cors',
     headers:{'Content-Type':'application/json'},
@@ -607,11 +608,29 @@ function handleForm(e){
       message:form.message.value,
       gclid:gclid
     })
-  }).then(function(){
+  });
+
+  var emailPost=fetch(EMAIL_URL,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      name:form.name.value,
+      email:form.email.value,
+      phone:form.phone.value,
+      business:form.business.value,
+      website:form.website.value,
+      service:form.service.value,
+      message:form.message.value,
+      _subject:'New Lead from wehypemedia.com: '+form.name.value,
+      _template:'table',
+      _captcha:false
+    })
+  });
+
+  Promise.allSettled([sheetPost,emailPost]).then(function(){
     btn.textContent='✓ Submitted — we\'ll be in touch!';
     btn.style.opacity='0.7';
     form.reset();
-    // Push to dataLayer for GTM conversion tracking
     window.dataLayer=window.dataLayer||[];
     window.dataLayer.push({event:'form_submit',form_type:'contact',gclid:gclid});
   }).catch(function(){
@@ -646,24 +665,35 @@ function submitAudit(e){
   var gclid=localStorage.getItem('gclid')||'';
   btn.textContent='Sending...';btn.disabled=true;
 
-  fetch(FORM_URL,{
+  var data={
+    name:document.getElementById('auditName').value,
+    phone:document.getElementById('auditPhone').value,
+    business:document.getElementById('auditBiz').value,
+    date:document.getElementById('auditDate').value,
+    time:document.getElementById('auditTime').value,
+    challenge:document.getElementById('auditChallenge').value
+  };
+
+  var sheetPost=fetch(FORM_URL,{
     method:'POST',
     mode:'no-cors',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      formType:'audit',
-      name:document.getElementById('auditName').value,
-      phone:document.getElementById('auditPhone').value,
-      business:document.getElementById('auditBiz').value,
-      date:document.getElementById('auditDate').value,
-      time:document.getElementById('auditTime').value,
-      challenge:document.getElementById('auditChallenge').value,
-      gclid:gclid
-    })
-  }).then(function(){
+    body:JSON.stringify(Object.assign({formType:'audit',gclid:gclid},data))
+  });
+
+  var emailPost=fetch(EMAIL_URL,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(Object.assign({
+      _subject:'Audit Booking: '+data.name,
+      _template:'table',
+      _captcha:false
+    },data))
+  });
+
+  Promise.allSettled([sheetPost,emailPost]).then(function(){
     btn.textContent='✓ Request sent!';
     btn.style.opacity='0.7';
-    // Push to dataLayer for GTM
     window.dataLayer=window.dataLayer||[];
     window.dataLayer.push({event:'audit_booked',gclid:gclid});
     setTimeout(function(){closeAudit()},2000);
